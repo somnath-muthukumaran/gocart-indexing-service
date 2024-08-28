@@ -1,9 +1,12 @@
 package services
 
 import (
+	"encoding/json"
 	"log"
 
 	"github.com/niklaus-mikael/gocart/indexing-service/internal/esearch"
+	"github.com/niklaus-mikael/gocart/indexing-service/internal/rmq"
+	amqp "github.com/rabbitmq/amqp091-go"
 )
 
 type ProductsService struct {
@@ -27,6 +30,18 @@ func (p *ProductsService) RegisterIndex() error {
 }
 
 func (p *ProductsService) ListenForMessages() error {
-	log.Println("Listening for product messages")
+	err := rmq.Consume("product_queue", eventHandler)
+	if err != nil {
+		log.Fatalf("Error starting product service listener: %v", err)
+	}
 	return nil
+}
+
+func eventHandler(msg amqp.Delivery) {
+	var productData map[string]interface{}
+	if err := json.Unmarshal(msg.Body, &productData); err != nil {
+		log.Printf("Error decoding product event: %v", err)
+		return
+	}
+	log.Printf("Processing product event: %v", productData)
 }

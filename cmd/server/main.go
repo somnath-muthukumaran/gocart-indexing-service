@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"log"
 
 	"github.com/niklaus-mikael/gocart/indexing-service/internal/config"
@@ -11,7 +10,6 @@ import (
 )
 
 func main() {
-	fmt.Println("Checking")
 	config.LoadConfig()
 	esearch.Init()
 	_, err := rmq.Connect()
