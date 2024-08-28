@@ -2,8 +2,6 @@ package services
 
 import (
 	"log"
-
-	"github.com/elastic/go-elasticsearch/v8"
 )
 
 type IndexingService interface {
@@ -13,13 +11,10 @@ type IndexingService interface {
 
 type ServiceManager struct {
 	services []IndexingService
-	esClient *elasticsearch.Client
 }
 
-func NewServiceManager(esClient *elasticsearch.Client) *ServiceManager {
-	sm := &ServiceManager{
-		esClient: esClient,
-	}
+func NewServiceManager() *ServiceManager {
+	sm := &ServiceManager{}
 	sm.registerServices()
 	return sm
 }

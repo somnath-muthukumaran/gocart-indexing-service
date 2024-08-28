@@ -5,19 +5,20 @@ import (
 	"log"
 	"net"
 	"net/http"
-	"os"
 	"time"
 
 	"github.com/elastic/go-elasticsearch/v8"
+	"github.com/niklaus-mikael/gocart/indexing-service/internal/config"
 )
 
 var client *elasticsearch.Client
 
 func Init() {
 	var err error
-	URL := os.Getenv("ES_URL")
-	userName := os.Getenv("ES_USERNAME")
-	pwd := os.Getenv("ES_PASSWORD")
+	envConfig := config.GetEnvDetails()
+	URL := envConfig.ES_URL
+	userName := envConfig.ES_USERNAME
+	pwd := envConfig.ES_PASSWORD
 	cfg := elasticsearch.Config{
 		Addresses: []string{
 			URL,
