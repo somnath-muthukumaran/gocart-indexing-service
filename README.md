@@ -12,7 +12,6 @@ This project is a microservice built using [Go Fiber](https://gofiber.io/) that 
 
 ## Project Structure
 
-\`\`\`
 ├── cmd/
 │   └── main.go             # Entry point of the application
 ├── config/
@@ -20,7 +19,7 @@ This project is a microservice built using [Go Fiber](https://gofiber.io/) that 
 ├── internal/
 │   ├── esearch/            # Elasticsearch utility functions
 |   |   ├── client.go       # Elasticsearch client setup and configuration
-│   │   ├── indexing.go     # Index creation, updating, and document management
+|   |   ├── indexing.go     # Index creation, updating, and document management
 │   └── utils/
 │       └── logger.go       # Custom logging utility
 ├── mappings/               # Directory for Elasticsearch index mappings
@@ -32,28 +31,23 @@ This project is a microservice built using [Go Fiber](https://gofiber.io/) that 
 │   ├── connection.go       # RabbitMQ connection management
 │   └── consumer.go         # RabbitMQ consumer for message handling
 └── README.md               # This file
-\`\`\`
 
 ## Setup
 
+
 1. **Clone the repository:**
-    \`\`\`bash
     git clone https://github.com/somnath-muthukumaran/gocart-indexing-service.git
+   
     cd your-repo-directory
-    \`\`\`
 
-2. **Install dependencies:**
-    \`\`\`bash
+3. **Install dependencies:**
     go mod tidy
-    \`\`\`
 
-3. **Set up environment variables:**
-   Create a \`.env\` file in the root directory and define your environment variables (e.g., RabbitMQ and Elasticsearch configurations).
+4. **Set up environment variables:**
+   Create a .env file in the root directory and define your environment variables (e.g., RabbitMQ and Elasticsearch configurations).
 
-4. **Run the service:**
-    \`\`\`bash
+5. **Run the service:**
     go run cmd/main.go
-    \`\`\`
 
 ## Contributing
 
