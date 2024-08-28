@@ -15,7 +15,7 @@ func NewProductsService() *ProductsService {
 }
 func (p *ProductsService) RegisterIndex() error {
 	indexName := "products"
-	mappingFile := "mappings/product_mappings.json"
+	mappingFile := "product_mappings.json"
 	err := esearch.CreateIndex(indexName, mappingFile)
 	if err != nil {
 		log.Printf("Failed to register index for %s: %v", indexName, err)

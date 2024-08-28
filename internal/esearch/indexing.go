@@ -48,7 +48,7 @@ func CreateIndex(indexName, mappingFile string) error {
 	if err != nil {
 		return err
 	}
-
+	fmt.Println("mapping", mapping)
 	exists, err := CheckIndexExists(indexName)
 	if err != nil {
 		return err

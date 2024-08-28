@@ -25,4 +25,8 @@ func main() {
 	defer conn.Close()
 	serviceManager := services.NewServiceManager()
 	serviceManager.StartAll()
+
+	forever := make(chan bool)
+	log.Printf(" [*] Waiting for logs. To exit press CTRL+C")
+	<-forever
 }
