@@ -1,8 +1,48 @@
 {
-    "mappings": {
-        "properties": {
-            "name": {"type": "text"},
-            "price": {"type": "integer"}
+  "mappings": {
+    "properties": {
+      "productId": {
+        "type": "keyword"
+      },
+      "productName": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
         }
+      },
+      "categories": {
+        "type": "keyword"
+      },
+      "actualPrice": {
+        "type": "float"
+      },
+      "discountedPrice": {
+        "type": "float"
+      },
+      "discountPercentage": {
+        "type": "float"
+      },
+      "rating": {
+        "type": "float"
+      },
+      "ratingCount": {
+        "type": "integer"
+      },
+      "isDeleted": {
+        "type": "boolean"
+      },
+      "isActive": {
+        "type": "boolean"
+      },
+      "createdOn": {
+        "type": "date"
+      },
+      "updatedOn": {
+        "type": "date"
+      }
     }
+  }
 }

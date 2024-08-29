@@ -44,4 +44,5 @@ func eventHandler(msg amqp.Delivery) {
 		return
 	}
 	log.Printf("Processing product event: %v", productData)
+	// logic to be added here
 }
